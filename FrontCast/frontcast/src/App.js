@@ -12,7 +12,13 @@ class App extends React.Component {
     }
 
     changePriceHandler = () => {
-        console.log("clicked")
+        this.setState({
+            products: [
+                { title: 'Book 1', price: 59},
+                { title: 'Book 2', price: 69},
+                { title: 'Book 3', price: 29},
+            ],  
+        })
     }
 
     render() {
