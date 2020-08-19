@@ -30,6 +30,12 @@ class App extends React.Component {
         })
     }
 
+    deleteProductHandler = (productIndex) => {
+        const products = this.state.products
+        products.splice(productIndex, 1)
+        this.setState({products: products})
+    }
+
     render() {
 
         const btn = {
@@ -48,8 +54,11 @@ class App extends React.Component {
         if (this.state.showProducts) {
             products = (
                 <div>
-                    {this.state.products.map((item) => {
-                        return <Product title={item.title} price={item.price} />
+                    {this.state.products.map((item, index) => {
+                        return <Product 
+                        click={() => this.deleteProductHandler(index)}
+                        title={item.title} 
+                        price={item.price} />
                     })}
                 </div>
             )
