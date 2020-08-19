@@ -10,6 +10,7 @@ class App extends React.Component {
             { title: 'Book 2', price: 89},
             { title: 'Book 3', price: 79},
         ],
+        showProducts: false
     }
 
     changeTitleHandler = (event) => {
@@ -22,13 +23,10 @@ class App extends React.Component {
         })
     }
 
-    changePriceHandler = (newTitle) => {
+    toggleProductHandler = () => {
+        const show = this.state.showProducts
         this.setState({
-            products: [
-                { title: newTitle, price: 59},
-                { title: 'Book 2', price: 69},
-                { title: 'Book 3', price: 29},
-            ],  
+            showProducts: !show
         })
     }
 
@@ -48,6 +46,11 @@ class App extends React.Component {
         return (
             <div className="center">
                 <h2>Book store</h2>
+                <button style={btn} onClick={this.toggleProductHandler} >
+                    Show/Hide product
+                </button>
+                { this.state.showProducts ? (
+                    <div>
                 <Product
                     title={this.state.products[0].title} 
                     price={this.state.products[0].price} 
@@ -62,7 +65,8 @@ class App extends React.Component {
                     price={this.state.products[2].price} 
                     click={() => {this.changePriceHandler('New Title')}}
                 />
-                <button style={btn} onClick={this.changePriceHandler} >Change price</button>
+                </div>) : null}
+                
             </div>
         )
     }
