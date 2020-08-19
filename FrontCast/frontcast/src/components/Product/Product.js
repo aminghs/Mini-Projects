@@ -7,6 +7,7 @@ export const Product = (props) => {
             <p>Product Name: {props.title}</p>
             <p onClick={props.click}>Product Price: {props.price}</p>
             <p>{props.children}</p>
+            <input type="text" onChange={props.change} />
         </div>
     )
 }

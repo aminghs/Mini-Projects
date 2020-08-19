@@ -12,6 +12,16 @@ class App extends React.Component {
         ],
     }
 
+    changeTitleHandler = (event) => {
+        this.setState({
+            products: [
+                { title: 'Book 1', price: 59},
+                { title: event.target.value, price: 69},
+                { title: 'Book 3', price: 29},
+            ],  
+        })
+    }
+
     changePriceHandler = (newTitle) => {
         this.setState({
             products: [
@@ -32,7 +42,8 @@ class App extends React.Component {
                 />
                 <Product 
                     title={this.state.products[1].title} 
-                    price={this.state.products[1].price} 
+                    price={this.state.products[1].price}
+                    change={this.changeTitleHandler} 
                 />
                 <Product 
                     title={this.state.products[2].title} 
