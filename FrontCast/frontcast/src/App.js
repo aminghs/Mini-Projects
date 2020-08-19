@@ -43,30 +43,25 @@ class App extends React.Component {
             margin: '0.6rem auto',
         }
 
+        let products = null
+
+        if (this.state.showProducts) {
+            products = (
+                <div>
+                    {this.state.products.map((item) => {
+                        return <Product title={item.title} price={item.price} />
+                    })}
+                </div>
+            )
+        }
+
         return (
             <div className="center">
                 <h2>Book store</h2>
                 <button style={btn} onClick={this.toggleProductHandler} >
                     Show/Hide product
                 </button>
-                { this.state.showProducts ? (
-                    <div>
-                <Product
-                    title={this.state.products[0].title} 
-                    price={this.state.products[0].price} 
-                />
-                <Product 
-                    title={this.state.products[1].title} 
-                    price={this.state.products[1].price}
-                    change={this.changeTitleHandler} 
-                />
-                <Product 
-                    title={this.state.products[2].title} 
-                    price={this.state.products[2].price} 
-                    click={() => {this.changePriceHandler('New Title')}}
-                />
-                </div>) : null}
-                
+                {products}
             </div>
         )
     }
