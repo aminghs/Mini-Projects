@@ -1,16 +1,18 @@
-import React from 'react'
+import React, { Component } from 'react'
 
 import './Product.css'
 
-const Product = (props) => {
-  return (
-    <div className="product">
-      <p onClick={props.click}>Product Name: {props.title}</p>
-      <p>Product Price: {props.price}</p>
-      <p>{props.children}</p>
-      <input type="text" onChange={props.change} value={props.title} />
-    </div>
-  )
+class Product extends Component {
+  render () {
+    return (
+      <div className="product">
+        <p onClick={this.props.click}>Product Name: {this.props.title}</p>
+        <p>Product Price: {this.props.price}</p>
+        <p>{this.props.children}</p>
+        <input type="text" onChange={this.props.change} value={this.props.title} />
+      </div>
+    )
+  }
 }
 
 export default Product
