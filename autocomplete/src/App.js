@@ -9,8 +9,9 @@ function App() {
 
   useEffect(() => {
     const loadUsers = async () => {
-      const response = await axios.get('https://reqres.in/api/users')
-      setUsers(response.data.data)
+      const response = await axios.get('https://api.deezer.com/artist/27')
+      setUsers(response.data)
+      console.log(response.data)
     }
     loadUsers()
   } , [])
