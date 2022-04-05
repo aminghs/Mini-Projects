@@ -8,9 +8,16 @@ function App() {
   const [suggestions, setSuggestions] = useState([])
 
   useEffect(() => {
+<<<<<<< Updated upstream
     const loadUsers = async () => {
       const response = await axios.get('https://reqres.in/api/users')
       setUsers(response.data.data)
+=======
+    const loadUsers = async (name) => {
+      const response = await axios.get(`https://api.deezer.com/artist/${name}`)
+      setUsers(response.data.name)
+      console.log(response.data.name)
+>>>>>>> Stashed changes
     }
     loadUsers()
   } , [])
@@ -20,7 +27,7 @@ function App() {
     if(text.length>0) {
       matches = users.filter(user => {
         const regex = new RegExp(`${text}`, "gi")
-        return user.email.match(regex)
+        return user.name.match(regex)
       })
     }
     setSuggestions(matches)
